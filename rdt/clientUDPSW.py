@@ -22,7 +22,7 @@ while True:
             if ack == window[n - 1]:
                     seq_num+=1
                     start_index+=1
-                    n+= start_index
+                    n+= 1
                     window.append(seq_num)
                     print(recievedMessage.decode('utf-8'))
 
