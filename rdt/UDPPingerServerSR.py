@@ -16,7 +16,7 @@ while True:
         message = message.decode('utf-8').split(',')
         print(message)
         if seq_num == int(message[0]):
-            seq_num +=1
+            seq_num = int(message[0])
             print(seq_num)
             message = str(seq_num) + ', ACK'
             serverSocket.sendto(message.encode(),address)

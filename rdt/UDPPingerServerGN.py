@@ -6,7 +6,7 @@ serverSocket = socket(AF_INET, SOCK_DGRAM)
 serverSocket.settimeout(2.0)
 serverSocket.bind(('', 12000))
 seq_num = 0 
-
+n = 2
 while True:
     
     packet = seq_num
@@ -15,7 +15,7 @@ while True:
         message,address = serverSocket.recvfrom(1024)  
         message = message.decode('utf-8').split(',')
         print(message)
-        if seq_num == int(message[0]):
+        if seq_num <= int(message[0]) + n:
             seq_num +=1
             print(seq_num)
             message = str(seq_num) + ', ACK'
