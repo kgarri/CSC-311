@@ -7,7 +7,7 @@ addr = ("localhost", 12000)
 seq_num = 0
 while true:
     packet = seq_num
-    message = str(seq_num) + ", " message
+    message = str(seq_num) + ", "+ message
     clientSocket.sendto(message.encode(), addr)
     try:
         recievedMessage.split(',') , server = clientSocket.recvfrom(1024)
