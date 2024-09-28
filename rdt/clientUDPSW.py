@@ -14,15 +14,15 @@ while True:
         message = str(window[seq]) + ", "+ message
         print(message)
         clientSocket.sendto(message.encode(), addr)
-        try:
-            recievedMessage, server = clientSocket.recvfrom(1024)
-            ack = int(recievedMessage.decode('utf-8').split(',')[0])
-            if ack == window[n - 1]:
-                    seq_num+=1
-                    start_index+=1
-                    n+= 1
-                    window.append(seq_num)
-                    print(recievedMessage.decode('utf-8'))
+    try:
+        recievedMessage, server = clientSocket.recvfrom(1024)
+        ack = int(recievedMessage.decode('utf-8').split(',')[0])
+        if ack == window[n - 1]:
+                seq_num+=1
+                start_index+=1
+                n+= 1
+                window.append(seq_num)
+                print(recievedMessage.decode('utf-8'))
 
-        except timeout:
-            print('Request timed out')
+    except timeout:
+        print('Request timed out')
