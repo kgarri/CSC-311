@@ -4,27 +4,27 @@ clientSocket = socket(AF_INET, SOCK_DGRAM)
 clientSocket.settimeout(1.0)
 addr = ("localhost", 12000)
 seq_num = 0
-window = [seq_num]
+window = [0,1]
 n = 2
+start_index = 0
+copy = seq_num
 while True:
     message = 'ping'
-    for seq in window:
+    for seq in window[start_index:n]:
         packet = seq
+        copy = seq
         message = str(seq) + ", "+ message
         print(message)
         clientSocket.sendto(message.encode(), addr)
-    try:
-        recievedMessage, server = clientSocket.recvfrom(1024)
-        ack = int(recievedMessage.decode('utf-8').split(',')[0])
-        if ack ==  window[-1]:
-            if len(window)+1<n:
-                seq_num +=1
-                window.append(seq_num)
-            else:
-                seq_num+=1
-                window[0] = window[-1]
-                window[-1] = seq_num
-            print(recievedMessage.decode('utf-8'))
+        try:
+            recievedMessage, server = clientSocket.recvfrom(1024)
+            ack = int(recievedMessage.decode('utf-8').split(',')[0])
+            if ack == window[n - 1]:
+                    seq_num+=1
+                    start_index+=1
+                    n+= start_index
+                    window.append(seq_num)
+                    print(recievedMessage.decode('utf-8'))
 
-    except timeout:
-        print('Request timed out')
+        except timeout:
+            print('Request timed out')
