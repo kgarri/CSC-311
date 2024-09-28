@@ -10,10 +10,8 @@ start_index = 0
 copy = seq_num
 while True:
     message = 'ping'
-    for seq in window[start_index:n]:
-        packet = seq
-        copy = seq
-        message = str(seq) + ", "+ message
+    for seq in range(start_index, n):
+        message = str(window[seq]) + ", "+ message
         print(message)
         clientSocket.sendto(message.encode(), addr)
         try:

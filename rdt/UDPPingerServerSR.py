@@ -18,10 +18,10 @@ while True:
         print(message)
         if window[-1] == int(message[0]):
             seq_num = int(message[0])
-            window.append(int(message[0])+1)
             for seq in window:
                 message = str(seq) + ', ACK'
                 serverSocket.sendto(message.encode(),address)
+            window.append(int(message[0])+1)
         else:
                 message = str(seq_num) + ', ACK'
                 serverSocket.sendto(message.encode(),address)
