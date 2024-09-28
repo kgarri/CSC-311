@@ -10,7 +10,7 @@ start_index = 0
 copy = seq_num
 while True:
     message = 'ping'
-    for seq in range(start_index, n + 1):
+    for seq in range(start_index, n):
         message = str(window[seq]) + ", "+ message
         print(message)
         clientSocket.sendto(message.encode(), addr)

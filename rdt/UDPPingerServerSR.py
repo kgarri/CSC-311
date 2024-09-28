@@ -24,7 +24,7 @@ while True:
                 seq_num = int(message[0])
                 window.append(int(message[0]))
             if seq_num == r:
-                for seq in range(r,n + 1):
+                for seq in range(r,n):
                     message = str(window[seq]) + ', ACK'
                     serverSocket.sendto(message.encode(),address)
                     r+=1
