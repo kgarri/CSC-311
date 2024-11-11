@@ -1,7 +1,7 @@
 from huffman import huff
 import sys
 import os
-
+# this is used to execute the compression algorithim by taking in a system arg and editing the filename to end in huff
 def main() :
     if len(sys.argv) != 2 :
         print('usage: ' + sys.argv[0] + ' file')

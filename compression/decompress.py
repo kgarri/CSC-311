@@ -1,7 +1,7 @@
 from huffman import huff
 import sys
 import os
-
+# this is a utility file for decompressing a huff encoded file this is again done by taking in sy arguments opening the file and creating a new output file with .orig at the end
 def main() :
     if len(sys.argv) != 2 :
         print('usage: ' + sys.argv[0] + ' file.huff')

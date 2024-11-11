@@ -1,6 +1,10 @@
 import io 
 import os.path 
 import heapq
+#there is  some edits between this code and the code from https://github.com/asioson/huffman/blob/main/huffman.py as it did somethings that didn't makesense 
+# and we added the node information to better match up how most trees are stored through linked nodes 
+# additionally added commments for context and edited certain sections of the code to improve some effciency and to make the code more readable than the orginal
+
 class node: # this is used to build a tree that can be used to make a huffman tree
     def __init__(self, freq , symbol):
         self.freq = freq
